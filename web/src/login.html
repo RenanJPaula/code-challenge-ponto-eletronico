@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+    <form id="formLogin">
+      <input type="text" required id="inputName">
+      <input type="password" required id="inputPassword">
+
+      <p id="invalidUserMessage" class="hide">Usuário ou senha inválidos!</p>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <script src="js/libs/my-util-jquery-style.js"></script>
+    <script src="js/config/api-config.js"></script>
+    <script src="js/controllers/login-controller.js"></script>
+  </body>
+</html>
