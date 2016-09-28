@@ -39,18 +39,22 @@
     }
 
     show () {
-      this.removeClass('hide')
+      this.element.style.display = ''
       return this
     }
 
     hide () {
-      this.addClass('hide')
+      this.element.style.display = 'none'
       return this
     }
   }
 
   function myJqueryImpl (selector) {
     return new EnhancedElement(document.querySelector(selector))
+  }
+
+  myJqueryImpl.location = (path) => {
+    window.location = path
   }
 
   myJqueryImpl.get = (path) => {

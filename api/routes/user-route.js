@@ -8,7 +8,7 @@ router.post('/user', (req, res, next) => {
 })
 
 router.post('/user/authenticate', (req, res, next) => {
-  return res.status(400).send()
+  return res.status(200).send()
 })
 
 module.exports = router
