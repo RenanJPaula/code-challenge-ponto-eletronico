@@ -6,6 +6,7 @@
   const _buttonNewPoint = $('#buttonNewPoint')
   const _dialog = document.querySelector('dialog')
   const _formPointRecord = $('#formPointRecord')
+  const _inputPointRecordId = $('#inputPointRecordId')
   const _inputEntryTime = $('#inputEntryTime')
   const _inputLunchTime = $('#inputLunchTime')
   const _inputReturnTime = $('#inputReturnTime')
@@ -30,13 +31,22 @@
     let exitTime = new Date()
     exitTime.setHours(..._inputExitTime.value().split(':'))
 
-    new PointRecord(entryTime, lunchTime, returnTime, exitTime).save().then(() => {
+    new PointRecord(_inputPointRecordId.value(), entryTime, lunchTime, returnTime, exitTime).save().then(() => {
       _dialog.close()
       initPointRecordsTable()
     })
 
     return false
   })
+
+  function editPointRecord (pointRecord) {
+    _inputPointRecordId.value(pointRecord._id)
+    _inputEntryTime.value(pointRecord.getFormatedEntryTime())
+    _inputLunchTime.value(pointRecord.getFormatedLunchTime())
+    _inputReturnTime.value(pointRecord.getFormatedReturnTime())
+    _inputExitTime.value(pointRecord.getFormatedExitTime())
+    _dialog.showModal()
+  }
 
   function configDialog () {
     _buttonNewPoint.on('click', () => {
@@ -54,29 +64,49 @@
 
   function initPointRecordsTable () {
     PointRecord.getPointRecords().then((pointRecords) => {
-      let _tableHtml = pointRecords.map((pointRecord) => {
-        return `<tr>
-                  <td class="mdl-data-table__cell--non-numeric">${pointRecord.getFormatedDate()}</td>
-                  <td class="mdl-data-table__cell--non-numeric">${pointRecord.getFormatedEntryTime()}</td>
-                  <td class="mdl-data-table__cell--non-numeric">${pointRecord.getFormatedLunchTime()}</td>
-                  <td class="mdl-data-table__cell--non-numeric">${pointRecord.getFormatedReturnTime()}</td>
-                  <td class="mdl-data-table__cell--non-numeric">${pointRecord.getFormatedExitTime()}</td>
-                  <td class="mdl-data-table__cell--non-numeric">${pointRecord.total} horas</td>
-                  <td class="mdl-data-table__cell--non-numeric">
-                    <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-button--accent">
-                      <i class="material-icons">edit</i>
-                    </button>
-                  </td>
-                </tr>`
-      }).reduce((previous, current) => {
-        return previous + current
+      _pointRecordTable.element.innerHTML = ''
+      pointRecords.forEach((pointRecord) => {
+        let _tr = document.createElement('TR')
+        let _td = document.createElement('TD')
+        let _buttonEdit = document.createElement('BUTTON')
+        let _editIcon = document.createElement('I')
+        _td.className = 'mdl-data-table__cell--non-numeric'
+        _buttonEdit.className = 'buttonEdit mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-button--accent'
+        _editIcon.className = 'material-icons'
+        _editIcon.innerText = 'edit'
+        _buttonEdit.appendChild(_editIcon)
+
+        _td.innerText = pointRecord.getFormatedDate()
+        _tr.appendChild(_td.cloneNode(true))
+
+        _td.innerText = pointRecord.getFormatedEntryTime()
+        _tr.appendChild(_td.cloneNode(true))
+
+        _td.innerText = pointRecord.getFormatedLunchTime()
+        _tr.appendChild(_td.cloneNode(true))
+
+        _td.innerText = pointRecord.getFormatedReturnTime()
+        _tr.appendChild(_td.cloneNode(true))
+
+        _td.innerText = pointRecord.getFormatedExitTime()
+        _tr.appendChild(_td.cloneNode(true))
+
+        _td.innerText = `${pointRecord.total} horas`
+        _tr.appendChild(_td.cloneNode(true))
+
+        _td.innerHTML = _buttonEdit.outerHTML
+        _tr.appendChild(_td.cloneNode(true))
+
+        _tr.addEventListener('click', () => {
+          editPointRecord(pointRecord)
+        })
+        _pointRecordTable.element.appendChild(_tr)
       })
 
       let _totalWorkHours = pointRecords.reduce((previous, current) => {
         return (previous.total || previous) + (current.total || current)
       })
 
-      _pointRecordTable.element.innerHTML = _tableHtml
       _totalWorkHoursCell.element.innerHTML = `${_totalWorkHours} horas`
     })
   }

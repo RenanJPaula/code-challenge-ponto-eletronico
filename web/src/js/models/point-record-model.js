@@ -2,7 +2,8 @@
 
 ;(function (window) {
   class PointRecord {
-    constructor (entryTime, lunchTime, returnTime, exitTime) {
+    constructor (_id, entryTime, lunchTime, returnTime, exitTime) {
+      this._id = _id
       this.entryTime = entryTime
       this.lunchTime = lunchTime
       this.returnTime = returnTime
@@ -73,14 +74,17 @@
 
     save () {
       return new Promise((resolve) => {
-        records.push(this)
+        if (!this._id) {
+          this._id = _ID_COUNT++
+        }
+        _RECORDS[this._id] = this
         resolve()
       })
     }
 
     static getPointRecords () {
       return new Promise((resolve) => {
-        resolve(records)
+        resolve(_RECORDS)
       })
     }
   }
@@ -99,20 +103,24 @@
     return (endDate.getTime() - beginDate.getTime()) / 3600000
   }
 
-  const records = [
+  let _ID_COUNT = 1
+  const _RECORDS = [
     new PointRecord(
+      _ID_COUNT++,
       new Date(1991, 9, 1, 8, 0, 0, 0),
       new Date(1991, 9, 1, 12, 0, 0, 0),
       new Date(1991, 9, 1, 13, 0, 0, 0),
       new Date(1991, 9, 1, 17, 0, 0, 0)
     ),
     new PointRecord(
+      _ID_COUNT++,
       new Date(1991, 9, 2, 8, 0, 0, 0),
       new Date(1991, 9, 2, 12, 0, 0, 0),
       new Date(1991, 9, 2, 13, 0, 0, 0),
       new Date(1991, 9, 2, 17, 0, 0, 0)
     ),
     new PointRecord(
+      _ID_COUNT++,
       new Date(1991, 9, 3, 8, 0, 0, 0),
       new Date(1991, 9, 3, 12, 0, 0, 0),
       new Date(1991, 9, 3, 13, 0, 0, 0),
