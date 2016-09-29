@@ -1,0 +1,16 @@
+.login-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+  margin: 80px auto;
+}
+
+.login-card-square > .mdl-card__title {
+  color: #fff;
+  background-color: #1976D2;
+}
+
+.login-card-square > .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items:flex-end;
+}

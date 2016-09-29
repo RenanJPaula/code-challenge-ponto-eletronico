@@ -1,0 +1,13 @@
+body {
+  background-color: #EFEFEF;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.page-content {
+  padding: 20px;
+  position: relative;
+}

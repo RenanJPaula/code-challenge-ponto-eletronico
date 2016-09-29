@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Controle de Ponto - Lançamentos</title>
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-red.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Lançamentos</span>
+          <div class="mdl-layout-spacer"></div>
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="/dashboard.html">Dashboards</a>
+            <a class="mdl-navigation__link" href="/">Sair</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Controle de Ponto</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/dashboard.html">Dashboards</a>
+          <a class="mdl-navigation__link" href="/">Sair</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content mdl-grid" style="overflow-y:scroll">
+            <table class="mdl-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Data</th>
+                  <th class="mdl-data-table__cell--non-numeric">Entrada</th>
+                  <th class="mdl-data-table__cell--non-numeric">Almoço</th>
+                  <th class="mdl-data-table__cell--non-numeric">Retorno</th>
+                  <th class="mdl-data-table__cell--non-numeric">Saída</th>
+                  <th class="mdl-data-table__cell--non-numeric">Total</th>
+                  <th class="mdl-data-table__cell--non-numeric">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="pointRecordTable">
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric" colspan="5">Sumarização:</td>
+                  <td class="mdl-data-table__cell--non-numeric" id="totalWorkHoursCell"></td>
+                  <td class="mdl-data-table__cell--non-numeric">
+                    <button id="buttonNewPoint" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-button--accent">
+                      <i class="material-icons">add</i>
+                    </button>
+                  </td>
+                </td>
+              </tfoot>
+            </table>
+
+            <dialog class="mdl-dialog">
+              <h4 class="mdl-dialog__title">Lançamento</h4>
+              <form id="formPointRecord">
+                <input type="hidden" required id="inputPointRecordId">
+
+                <div class="mdl-dialog__content mdl-grid">
+                  <div class="mdl-cell mdl-cell--12-col">
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <label for="inputEntryTime">Entrada</label>
+                      <input class="mdl-textfield__input" type="time" required id="inputEntryTime">
+                    </div>
+                  </div>
+
+                  <div class="mdl-cell mdl-cell--6-col">
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <label for="inputLunchTime">Almoço</label>
+                      <input class="mdl-textfield__input" type="time" required id="inputLunchTime">
+                    </div>
+                  </div>
+
+                  <div class="mdl-cell mdl-cell--6-col">
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <label for="inputReturnTime">Retorno</label>
+                      <input class="mdl-textfield__input" type="time" required id="inputReturnTime">
+                    </div>
+                  </div>
+
+                  <div class="mdl-cell mdl-cell--12-col">
+                    <div class="mdl-textfield mdl-js-textfield">
+                      <label for="inputExitTime">Saída</label>
+                      <input class="mdl-textfield__input" type="time" required id="inputExitTime">
+                    </div>
+                  </div>
+                </div>
+                <div class="mdl-dialog__actions">
+                  <button type="submit" class="mdl-button">Salvar</button>
+                  <button type="button" class="mdl-button close">Cancelar</button>
+                </div>
+              </form>
+            </dialog>
+        </div>
+      </main>
+    </div>
+
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="js/libs/my-util-jquery-style.js"></script>
+    <script src="js/config/api-config.js"></script>
+    <script src="js/models/point-record-model.js"></script>
+    <script src="js/controllers/point-record-controller.js"></script>
+  </body>
+</html>
