@@ -5,3 +5,8 @@ body {
 .hide {
   display: none;
 }
+
+.page-content {
+  padding: 20px;
+  position: relative;
+}
