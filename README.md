@@ -11,7 +11,7 @@ As seções a seguir sumarizam as tecnologias utilizadas e decisões tomadas par
 - [Google Charts](https://developers.google.com/chart/)
 - JavaScript Puro
 
-Para entrar na brincadeira criei um utilitário para manipulação de DOM parecido com o [JQuery](./src/static/js/libs/my-util-jquery-style.js).
+Para entrar na brincadeira criei um [utilitário](./src/static/js/libs/my-util-jquery-style.js) para manipulação de DOM parecido com o JQuery.
 
 # Execução do Projeto
 
