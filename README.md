@@ -11,12 +11,14 @@ As seções a seguir sumarizam as tecnologias utilizadas e decisões tomadas par
 - [Google Charts](https://developers.google.com/chart/)
 - JavaScript Puro
 
+Para entrar na brincadeira criei um utilitário para manipulação de DOM parecido com o [JQuery](./src/static/js/libs/my-util-jquery-style.js).
+
 # Execução do Projeto
 
 - Instalar o [NodeJS](https://nodejs.org/en/) e [NPM](https://www.npmjs.com/);
 - Clonar o repositório;
 - Entrar via terminal na pasta **src**;
-- Instalar as dependências via: **npm install**;
+- Instalar as dependências via **npm install**;
 - Executar o projeto via **npm start**;
 
 O servidor HTTP está previamente configurado para utilizar a porta 3000. Caso seja necessário alterar esta porta, basta alterar o arquivo: **src/env.js**;
@@ -24,6 +26,12 @@ O servidor HTTP está previamente configurado para utilizar a porta 3000. Caso s
 Credenciais para realização do login:
 Usuário: teste
 senha: teste
+
+# Implementações futuras
+- Adição do MongoDB;
+- Validação no Back-End;
+- Incrementos nos gráficos;
+- Dinamização da entrada de dados;
 
 # Contato
 
