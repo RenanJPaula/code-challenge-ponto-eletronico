@@ -35,5 +35,5 @@ senha: teste
 
 # Contato
 
-[Email - Renan Johannsen de Paula](renanjohannsen@gmail.com);
+renanjohannsen@gmail.com;
 
