@@ -9,7 +9,7 @@ As seções a seguir sumarizam as tecnologias utilizadas e decisões tomadas par
 ## Front-End
 - [materializecss](http://materializecss.com/)
 - [Google Charts](https://developers.google.com/chart/)
-- JavaScript Puro
+- JavaScript na ES6 
 
 Para entrar na brincadeira criei um [utilitário](./src/static/js/libs/my-util-jquery-style.js) para manipulação de DOM parecido com o JQuery.
 
@@ -19,9 +19,15 @@ Para entrar na brincadeira criei um [utilitário](./src/static/js/libs/my-util-j
 - Clonar o repositório;
 - Entrar via terminal na pasta **src**;
 - Instalar as dependências via **npm install**;
+```shell
+  npm install
+```
 - Executar o projeto via **npm start**;
+```shell
+  npm start
+```
 
-O servidor HTTP está previamente configurado para utilizar a porta 3000. Caso seja necessário alterar esta porta, basta alterar o arquivo: **src/env.js**;
+O servidor HTTP está previamente configurado para utilizar a porta 3000. Caso seja necessário alterar esta porta, basta alterar o arquivo: **src/env.js** e **src/static/config/config-api.js**;
 
 Credenciais para realização do login:
 Usuário: teste
@@ -29,9 +35,9 @@ senha: teste
 
 # Implementações futuras
 - Adição do MongoDB;
-- Validação no Back-End;
-- Incrementos nos gráficos;
-- Dinamização da entrada de dados;
+- Adição dos gráficos mensais e anuais;
+- Dinamização da entrada de dados para permitir a entradas diferentes do dia atual;
+ 
 
 # Contato
 
