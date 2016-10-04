@@ -9,7 +9,7 @@ As seções a seguir sumarizam as tecnologias utilizadas e decisões tomadas par
 ## Front-End
 - [materializecss](http://materializecss.com/)
 - [Google Charts](https://developers.google.com/chart/)
-- JavaScript na ES6 
+- JavaScript com ES6 
 
 Para entrar na brincadeira criei um [utilitário](./src/static/js/libs/my-util-jquery-style.js) para manipulação de DOM parecido com o JQuery.
 
@@ -37,8 +37,8 @@ senha: teste
 - Adição do MongoDB;
 - Adição dos gráficos mensais e anuais;
 - Dinamização da entrada de dados para permitir a entradas diferentes do dia atual;
+- Criação de build e otimização via Gulp;
  
-
 # Contato
 
 renanjohannsen@gmail.com;
