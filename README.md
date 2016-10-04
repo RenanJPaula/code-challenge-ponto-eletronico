@@ -30,7 +30,9 @@ Para entrar na brincadeira criei um [utilitário](./src/static/js/libs/my-util-j
 O servidor HTTP está previamente configurado para utilizar a porta 3000. Caso seja necessário alterar esta porta, basta alterar o arquivo: **src/env.js** e **src/static/js/config/api-config.js**;
 
 Credenciais para realização do login:
+
 Usuário: teste
+
 senha: teste
 
 # Implementações futuras
